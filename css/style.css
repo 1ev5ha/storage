@@ -1,0 +1,139 @@
+body{font-family:Arial,sans-serif;max-width:900px;margin:auto;padding:1rem}nav{display:none}nav.open{display:block}@media(min-width:768px){#b{display:none}nav{display:block}}
+
+/* ============================
+   Smooth animations
+============================ */
+
+section,
+article,
+.hero,
+.note{
+
+    animation:fadeUp .6s ease;
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+        transform:translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ============================
+   Header animation
+============================ */
+
+header{
+
+    transition:.3s;
+}
+
+header.scrolled{
+
+    height:60px;
+
+    background:rgba(255,255,255,.96);
+
+    backdrop-filter:blur(12px);
+
+    box-shadow:0 8px 30px rgba(0,0,0,.08);
+
+}
+
+/* ============================
+   Navigation underline
+============================ */
+
+nav a{
+
+    position:relative;
+}
+
+nav a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-6px;
+
+    width:0;
+
+    height:2px;
+
+    background:var(--primary);
+
+    transition:.3s;
+}
+
+nav a:hover::after{
+
+    width:100%;
+}
+
+
+
+/* ============================
+   Images
+============================ */
+
+img{
+
+    transition:.35s;
+}
+
+img:hover{
+
+    transform:scale(1.02);
+}
+
+/* ============================
+   Selection
+============================ */
+
+::selection{
+
+    background:#2c7a52;
+
+    color:white;
+}
+
+/* ============================
+   Scrollbar
+============================ */
+
+::-webkit-scrollbar{
+
+    width:10px;
+}
+
+::-webkit-scrollbar-track{
+
+    background:#edf2f7;
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#2c7a52;
+
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#1f5d3f;
+}
+
