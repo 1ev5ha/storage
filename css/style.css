@@ -1,4 +1,188 @@
-body{font-family:Arial,sans-serif;max-width:900px;margin:auto;padding:1rem}nav{display:none}nav.open{display:block}@media(min-width:768px){#b{display:none}nav{display:block}}
+/* ============================
+   Подключаем шрифт JetBrains Mono
+============================ */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&display=swap');
+
+/* ============================
+   Базовые настройки
+============================ */
+body {
+    font-family: 'JetBrains Mono', monospace; /* ← Новый шрифт */
+    max-width: 900px;
+    margin: auto;
+    padding: 1rem;
+    background: #ffffff; /* ← Белый фон */
+    color: #000000; /* ← Черный текст */
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ============================
+   Мобильное меню
+============================ */
+
+/* Стили для кнопки-бургера */
+.menu-btn {
+    display: none;
+    background: none;
+    border: 2px solid #000; /* ← Черная рамка */
+    font-size: 28px;
+    cursor: pointer;
+    color: #000; /* ← Черный цвет */
+    padding: 5px 15px;
+    z-index: 1001;
+    line-height: 1;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    transition: all 0.2s;
+}
+
+.menu-btn:hover {
+    background: #f0f0f0; /* ← Серый фон при наведении */
+}
+
+/* Обертка для корректного отображения */
+.header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    flex-wrap: wrap;
+}
+
+/* Логотип */
+.logo {
+    /*font-size: 1.3rem; /* ← Уменьшил с 24px до rem */
+    /*font-weight: 800; /* ← Жирнее */
+    /*text-decoration: none;
+    /*color: #000;  ← Черный */
+    /*flex-shrink: 0;
+    /* background: #f0f0f0;  ← Серый фон */
+   /* padding: 5px 15px;
+    /*border: 1px solid #000;  ← Черная рамка */
+    /*letter-spacing: 2px; /* ← Добавил межбуквенный интервал */
+}
+
+/* Навигация */
+nav {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #000; /* ← Черный */
+    font-size: 0.9rem; /* ← Уменьшил с 16px */
+    font-weight: 700; /* ← Добавил жирность */
+    text-transform: uppercase; /* ← Добавил ЗАГЛАВНЫЕ */
+    letter-spacing: 1px; /* ← Добавил интервал */
+    padding: 5px 0;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent; /* ← Добавил подчеркивание */
+    transition: all 0.2s;
+}
+
+nav ul li a:hover {
+    border-bottom-color: #000; /* ← Черное подчеркивание */
+    background: #f0f0f0; /* ← Серый фон */
+}
+
+/* Стили для десктопа */
+@media (min-width: 768px) {
+    nav {
+        display: flex !important;
+    }
+    
+    #b {
+        display: none;
+    }
+}
+
+/* Контейнер для искр - поверх всего */
+#spark-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Пропускает клики */
+    z-index: 9999;
+}
+
+#spark-container canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Стили для мобилки */
+@media (max-width: 767px) {
+    .menu-btn {
+        display: block;
+    }
+    
+    nav {
+        display: none !important;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        right: 0;
+        background: #ffffff; /* ← Белый фон */
+        padding: 20px;
+        border: 2px solid #000; /* ← Черная рамка */
+        z-index: 1000;
+        flex: none;
+        justify-content: flex-start;
+        box-shadow: 8px 8px 0 rgba(0,0,0,0.05);
+    }
+    
+    nav.open {
+        display: block !important;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        gap: 5px;
+        align-items: stretch;
+    }
+    
+    nav ul li {
+        text-align: center;
+        border-bottom: 1px solid #eee; /* ← Серая линия между пунктами */
+    }
+    
+    nav ul li:last-child {
+        border-bottom: none;
+    }
+    
+    nav ul li a {
+        display: block;
+        padding: 12px;
+        font-size: 1rem;
+        white-space: normal;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-bottom: none;
+    }
+    
+    nav ul li a:hover {
+        background: #f0f0f0;
+        border-bottom-color: transparent;
+    }
+    
+    nav ul li a::after {
+        display: none;
+    }
+}
 
 /* ============================
    Smooth animations
@@ -7,77 +191,117 @@ body{font-family:Arial,sans-serif;max-width:900px;margin:auto;padding:1rem}nav{d
 section,
 article,
 .hero,
-.note{
-
-    animation:fadeUp .6s ease;
+.note {
+    animation: fadeUp .6s ease;
 }
 
-@keyframes fadeUp{
-
-    from{
-
-        opacity:0;
-        transform:translateY(30px);
-
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
     }
-
-    to{
-
-        opacity:1;
-        transform:translateY(0);
-
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
+}
 
+/* ============================
+   Header animation
+============================ */
+
+header {
+    transition: .3s;
+    border-bottom: 1px solid #000; /* ← Добавил черную линию */
+    padding: 10px 0;
+    margin-bottom: 10px;
+}
+
+header.scrolled {
+    height: 60px;
+    background: rgba(255,255,255,.96);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 30px rgba(0,0,0,.08);
+}
+
+/* ============================
+   Navigation underline (для десктопа)
+============================ */
+
+/* Этот блок оставляем только для десктопа */
+@media (min-width: 768px) {
+    nav a {
+        position: relative;
+    }
+    
+    nav a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -6px;
+        width: 0;
+        height: 2px;
+        background: #000; /* ← Черный (было var(--primary)) */
+        transition: .3s;
+    }
+    
+    nav a:hover::after {
+        width: 100%;
+    }
 }
 
 /* ============================
    Images
 ============================ */
 
-img{
-
-    transition:.35s;
+img {
+    transition: .35s;
+    max-width: 100%;
+    height: auto;
+    /* Запрет выделения */
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    
+    /* Запрет перетаскивания мышкой */
+    -webkit-user-drag: none;
+    user-drag: none;
+    
+    /* Отключение контекстного меню (клик правой кнопкой) */
+    pointer-events: none;
 }
 
-img:hover{
-
-    transform:scale(1.02);
+img:hover {
+    transform: scale(1.02);
 }
 
 /* ============================
    Selection
 ============================ */
 
-::selection{
-
-    background:#2c7a52;
-
-    color:white;
+::selection {
+    background: #0055ff; /* ← Синий (было #2c7a52) */
+    color: white;
 }
 
 /* ============================
    Scrollbar
 ============================ */
 
-::-webkit-scrollbar{
-
-    width:10px;
+::-webkit-scrollbar {
+    width: 10px;
 }
 
-::-webkit-scrollbar-track{
-
-    background:#edf2f7;
+::-webkit-scrollbar-track {
+    background: #f0f0f0; /* ← Светло-серый (было #edf2f7) */
 }
 
-::-webkit-scrollbar-thumb{
-
-    background:#2c7a52;
-
-    border-radius:20px;
+::-webkit-scrollbar-thumb {
+    background: #000; /* ← Черный (было #2c7a52) */
+    border-radius: 20px;
 }
 
-::-webkit-scrollbar-thumb:hover{
-
-    background:#1f5d3f;
+::-webkit-scrollbar-thumb:hover {
+    background: #333; /* ← Темно-серый (было #1f5d3f) */
 }
-
