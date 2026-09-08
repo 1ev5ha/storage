@@ -107,22 +107,6 @@ nav ul li a:hover {
     }
 }
 
-/* Контейнер для искр - поверх всего */
-#spark-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none; /* Пропускает клики */
-    z-index: 9999;
-}
-
-#spark-container canvas {
-    display: block;
-    width: 100%;
-    height: 100%;
-}
 
 /* Стили для мобилки */
 @media (max-width: 767px) {
