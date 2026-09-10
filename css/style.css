@@ -44,7 +44,7 @@ p {
    Мобильное меню
 ============================ */
 
-/* Стили для кнопки-бургера */
+/* Кнопка-бургер */
 .menu-btn {
     display: none;
     background: none;
@@ -64,7 +64,7 @@ p {
     background: #f0f0f0;
 }
 
-/* Обертка для корректного отображения */
+/* Обертка хедера */
 .header-inner {
     display: flex;
     justify-content: space-between;
@@ -73,22 +73,14 @@ p {
     flex-wrap: wrap;
 }
 
-/* Логотип (закомментирован как у вас) */
+/* Логотип */
 .logo {
-    /*
-    font-size: 1.3rem;
-    font-weight: 800;
-    text-decoration: none;
-    color: #000;
-    flex-shrink: 0;
-    background: #f0f0f0;
-    padding: 5px 15px;
-    border: 1px solid #000;
-    letter-spacing: 2px;
-    */
+    /* при необходимости раскомментируйте */
 }
 
-/* Навигация */
+/* ============================
+   Навигация (общая)
+============================ */
 nav {
     flex: 1;
     display: flex;
@@ -123,85 +115,7 @@ nav ul li a:hover {
 }
 
 /* ============================
-   Подменю (submenu)
-============================ */
-
-/* Родительский пункт с подменю */
-.has-submenu {
-    position: relative;
-}
-
-/* Стрелочка-индикатор у пункта с подменю */
-.has-submenu > a::before {
-    content: "▾";
-    margin-right: 6px;
-    font-size: 0.8em;
-    display: inline-block;
-    transition: transform 0.2s;
-}
-
-.has-submenu:hover > a::before {
-    transform: rotate(180deg);
-}
-
-/* Сам выпадающий список (десктоп) */
-.submenu {
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    min-width: 200px;
-    background: #ffffff;
-    border: 2px solid #000;
-    list-style: none;
-    padding: 6px 0;
-    margin: 8px 0 0;
-    display: none;
-    flex-direction: column;
-    gap: 0;
-    z-index: 999;
-    box-shadow: 6px 6px 0 rgba(0,0,0,0.08);
-}
-
-/* Показ подменю при наведении на десктопе */
-@media (min-width: 768px) {
-    .has-submenu:hover .submenu {
-        display: flex;
-    }
-
-    nav {
-        display: flex !important;
-    }
-
-    #b {
-        display: none;
-    }
-}
-
-/* Ссылки внутри подменю — сбрасываем апперкейс и подчёркивание */
-.submenu li a {
-    display: block;
-    padding: 10px 16px;
-    font-size: 0.85rem;
-    text-transform: none;
-    letter-spacing: 0;
-    border-bottom: none;
-    text-align: left;
-    white-space: nowrap;
-}
-
-.submenu li a:hover {
-    background: #f0f0f0;
-    border-bottom-color: transparent;
-}
-
-/* Убираем псевдоэлемент-подчёркивание у ссылок подменю */
-.submenu li a::after {
-    display: none;
-}
-
-/* ============================
-   Стили для мобилки
+   Мобильные стили
 ============================ */
 @media (max-width: 767px) {
     .menu-btn {
@@ -220,7 +134,7 @@ nav ul li a:hover {
         z-index: 1000;
         flex: none;
         justify-content: flex-start;
-        box-shadow: 8px 8px 0 rgba(0,0,0,0.05);
+        box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.05);
     }
 
     nav.open {
@@ -261,6 +175,11 @@ nav ul li a:hover {
         display: none;
     }
 
+    /* Отключаем «мост» на мобильных — он там не нужен */
+    .has-submenu::after {
+        display: none;
+    }
+
     /* --- Подменю на мобильных --- */
     .submenu {
         position: static;
@@ -298,7 +217,7 @@ nav ul li a:hover {
 }
 
 /* ============================
-   Smooth animations
+   Плавные анимации
 ============================ */
 section,
 article,
@@ -330,33 +249,9 @@ header {
 
 header.scrolled {
     height: 60px;
-    background: rgba(255,255,255,.96);
+    background: rgba(255, 255, 255, .96);
     backdrop-filter: blur(12px);
-    box-shadow: 0 8px 30px rgba(0,0,0,.08);
-}
-
-/* ============================
-   Navigation underline (для десктопа)
-============================ */
-@media (min-width: 768px) {
-    nav a {
-        position: relative;
-    }
-
-    nav a::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -6px;
-        width: 0;
-        height: 2px;
-        background: #000;
-        transition: .3s;
-    }
-
-    nav a:hover::after {
-        width: 100%;
-    }
+    box-shadow: 0 8px 30px rgba(0, 0, 0, .08);
 }
 
 /* ============================
@@ -411,3 +306,5 @@ img:hover {
 ::-webkit-scrollbar-thumb:hover {
     background: #333;
 }
+
+
