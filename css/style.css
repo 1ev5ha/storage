@@ -279,6 +279,19 @@ img:hover {
     transform: scale(1.02);
 }
 
+figure {
+  margin: 0;
+ /* display: inline-block;*/
+}
+
+figcaption {
+  font-size: 14px;
+  color: #666;
+  text-align: center;
+  padding-top: 8px;
+  font-style: italic;
+}
+
 /* ============================
    Selection
 ============================ */
